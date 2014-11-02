@@ -13,6 +13,6 @@ RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php5/fpm/php-fpm.conf
 # add run script
 ADD run.sh /usr/local/bin/run
 
-VOLUME ["/run"]
+#VOLUME ["/run"]
 ENTRYPOINT ["/usr/local/bin/run"]
 CMD ["/usr/sbin/php5-fpm","-R","--fpm-config","/etc/php5/fpm/php-fpm.conf"]
