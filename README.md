@@ -17,7 +17,7 @@ The following environment variables can be passed to the docker image:
 
 `MAX_CHILDREN` (default: 5) - Sets the 'max_children' option in www.conf
 
-`LISTEN` (default: socket; options: socket, port) - Allows you to enable listening on port 9000 instead of the UNIX socket
+`LISTEN` (default: socket; options: socket or port) - Changes php5-fpm listen behavior
 
 ## Working with nginx + php5-fpm
 
