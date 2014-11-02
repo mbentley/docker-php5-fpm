@@ -10,7 +10,14 @@ To pull this image:
 Example usage:
 `docker run -i -t mbentley/php5-fpm`
 
-In the Dockerfile, there are examples that show how to make php5-fpm listen on port 9000.  This image just uses the default option of using a UNIX socket but feel free to fork it and modify it for yourself.
+## Environment Variables
+The following environment variables can be passed to the docker image:
+
+`MAX_SIZE` (default: 8) - Sets the 'post_max_size' and 'upload_max_filesize' options in php.ini
+
+`MAX_CHILDREN` (default: 5) - Sets the 'max_children' option in www.conf
+
+`LISTEN` (default: socket; options: socket, port) - Allows you to enable listening on port 9000 instead of the UNIX socket
 
 ## Working with nginx + php5-fpm
 
