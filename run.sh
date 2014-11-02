@@ -34,9 +34,11 @@ then
 	if [ ! -z ${LICENSE_KEY} ]
 	then
 		echo "Setting New Relic license key to '${LICENSE_KEY}'"
-		echo 'newrelic.license="'${LICENSE_KEY}'"' >> /etc/php5/fpm/php.ini
+		sed -i "s/;newrelic.enabled = true/newrelic.enabled = true/g" /etc/php5/mods-available/newrelic.ini
+		echo "Enabling the New Relic PHP agent"
+		sed -i "s/newrelic.license = ""/newrelic.license = "${LICENSE_KEY}"/g" /etc/php5/mods-available/newrelic.ini
 	else
-		echo "Skipping setting New Relic license key"
+		echo "Skipping New Relic setup"
 	fi
 	touch /tmp/configured
 	echo "Configuration complete."
