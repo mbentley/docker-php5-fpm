@@ -2,6 +2,7 @@
 MAX_SIZE=${MAX_SIZE:-8}
 MAX_CHILDREN=${MAX_CHILDREN:-5}
 LISTEN=${LISTEN:-socket}
+LICENSE_KEY=${LICENSE_KEY:-}
 
 if [ ! -f /tmp/configured ]
 then
@@ -28,6 +29,14 @@ then
 		sed -i "s/listen = \/var\/run\/php5-fpm.sock/listen = 9000/g" /etc/php5/fpm/pool.d/www.conf
 	else
 		echo "Using default value '/var/run/php5-fpm.sock' for 'listen'"
+	fi
+
+	if [ ! -z ${LICENSE_KEY} ]
+	then
+		echo "Setting New Relic license key to '${LICENSE_KEY}'"
+		echo 'newrelic.license="'${LICENSE_KEY}'"' >> /etc/php5/fpm/php.ini
+	else
+		echo "Skipping setting New Relic license key"
 	fi
 	touch /tmp/configured
 	echo "Configuration complete."
