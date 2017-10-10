@@ -3,7 +3,6 @@
 MAX_SIZE=${MAX_SIZE:-8}
 MAX_CHILDREN=${MAX_CHILDREN:-5}
 LISTEN=${LISTEN:-socket}
-LICENSE_KEY=${LICENSE_KEY:-}
 
 if [ ! -f /tmp/configured ]
 then
