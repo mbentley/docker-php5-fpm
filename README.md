@@ -2,7 +2,7 @@ mbentley/php5-fpm
 ==================
 
 docker image for php5-fpm
-based off of stackbrew/debian:jessie
+based off of debian:jessie
 
 To pull this image:
 `docker pull mbentley/php5-fpm`
