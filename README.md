@@ -22,12 +22,12 @@ The following environment variables can be passed to the docker image:
 ## Working with nginx + php5-fpm
 
 First start a PHP container:
-`docker run -itd –restart=always -v /data/shared/run:/var/run -v /data/www:/data/www -v /data/shared/ssmtp:/etc/ssmtp –name php5-fpm mbentley/php5-fpm`
+`docker run -itd –restart=always -v /data/shared/run:/var/run -v /data/www:/data/www -v /data/shared/ssmtp:/etc/ssmtp --name php5-fpm mbentley/php5-fpm`
 
 I use a volume to /data/shared/run on the host and then I also use a volume to /data/www on the host. /data/shared/run will get the UNIX socket as it is mapped to /var/run. I use /data/www so that php5-fpm has access to the files it needs to process requests.
 
 Now for my nginx container:
-`docker run -itd -p 80 –restart=always -v /data/shared/run:/var/run -v /data/www:/data/www -v /data/shared/nginx/my-custom-nginx-conf:/etc/nginx/sites-available/default –name my-site mbentley/nginx`
+`docker run -itd -p 80 –restart=always -v /data/shared/run:/var/run -v /data/www:/data/www -v /data/shared/nginx/my-custom-nginx-conf:/etc/nginx/sites-available/default --name my-site mbentley/nginx`
 
 I need to present /data/shared/run as a volume so that nginx can read the UNIX socket (see my [php.conf](https://github.com/mbentley/docker-nginx/blob/master/php.conf) in [mbentley/nginx](https://github.com/mbentley/docker-php5-fpm) which adds all of the necessary bits for PHP by including a single file). I also add in my /data/www directory which shares my site's code for nginx.
 
