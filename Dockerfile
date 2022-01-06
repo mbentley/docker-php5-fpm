@@ -1,5 +1,6 @@
-FROM debian:jessie
-MAINTAINER Matt Bentley <mbentley@mbentley.net>
+# rebased/repackaged base image that only updates existing packages
+FROM mbentley/debian:jessie
+LABEL maintainer="Matt Bentley <mbentley@mbentley.net>"
 
 # install typical php packages and then additional packages
 RUN apt-get update &&\
